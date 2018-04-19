@@ -1,1 +1,4 @@
 *.sol linguist-language=Solidity
+build/* linguist-vendored
+config/* linguist-vendored
+test/* linguist-vendored
