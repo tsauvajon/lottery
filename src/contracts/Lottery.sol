@@ -9,6 +9,9 @@ contract Lottery is Killable {
     uint nbUsers = 0;
     uint totalBets = 0;
 
+    event Bet(address _player, uint _amount);
+    event Won(address _winner, uint _pot);
+
     modifier hasValue() {
         require(msg.value > 0);
         _;
@@ -27,6 +30,8 @@ contract Lottery is Killable {
 
         usersBet[msg.sender] += msg.value;
         totalBets += msg.value;
+
+        emit Bet(msg.sender, msg.value);
     }
 
     function endLottery() public onlyOwner returns (address) {
@@ -37,10 +42,15 @@ contract Lottery is Killable {
             sum += usersBet[users[i]];
 
             if (sum >= winningNumber) {
+                emit Won(users[i], address(this).balance);
                 // destroy this contract and send the balance to users[i]
                 selfdestruct(users[i]);
                 return users[i];
             }
         }
+    }
+
+    function () public {
+        revert();
     }
 }
