@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <img src="./assets/bingo.svg" height="80">
+    <h1>La MAGNIFIQUE Lotterie de la Poudre aux yeux</h1>
+    <br><br>
     <router-view v-if="!error" />
     <div v-else class="error" >
       <br>
@@ -33,7 +35,16 @@ export default {
   margin-top: 60px;
 }
 
+a {
+  color: #2c3e50;
+  text-decoration: none;
+}
+
 .error {
  color: #cb3837;
+}
+
+body {
+  background: #eff2fa;
 }
 </style>

@@ -6,8 +6,8 @@ contract Lottery is Killable {
     mapping(address => uint) usersBet;
     mapping(uint => address) users;
 
-    uint nbUsers = 0;
-    uint totalBets = 0;
+    uint public nbUsers = 0;
+    uint public totalBets = 0;
 
     event Bet(address _player, uint _amount);
     event Won(address _winner, uint _pot);

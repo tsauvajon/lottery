@@ -87,7 +87,8 @@ const mutations = {
 const getters = {
   error: ({ error }) => error,
   web3: ({ web3 }) => web3,
-  contract: ({ contractInstanceGetter }) => contractInstanceGetter()
+  w3i: ({ web3 }) => web3 && web3.web3Instance && web3.web3Instance(),
+  contract: ({ contractInstanceGetter }) => contractInstanceGetter && contractInstanceGetter()
 }
 
 export default new Vuex.Store({
