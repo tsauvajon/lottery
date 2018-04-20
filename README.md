@@ -13,8 +13,9 @@ will need the [Metamask](https://metamask.io) extension on your browser.
 
 Please connect to the Ropsten test network.
 
-You need some ether to play the lottery. There are [several]() [faucets]() you
-can use to get some for free.
+You need ether to play the lottery. There are
+[several](https://faucet.bitfwd.xyz/) [faucets](https://faucet.metamask.io/)
+you can use to get some for free.
 
 ## Participate
 
