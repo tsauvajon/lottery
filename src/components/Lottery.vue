@@ -6,12 +6,12 @@
         <input type="number" v-model="bet" />&nbsp;Ξ
         <br><br>
         <span @click="placeBet" class="link-container bet">
-          <span><strong>Miser</strong></span>
+          <span><strong>Place bet</strong></span>
         </span>
         <template v-if="transactions.length">
           <br><br>
           <div>
-            Transactions en cours :
+            Processing transactions:
           </div>
           <div v-for="tx in transactions" :key="tx">
             <a :href="`https://ropsten.etherscan.io/tx/${tx}`">
@@ -24,10 +24,9 @@
     <br>
     <div v-if="contract" class="card form">
       <div v-if="w3i">
-        <strong>Pot total</strong>: {{ w3i.fromWei(totalBets) }} Ξ
-      </div>
-      <div>
-        <strong>Nombre de parieurs</strong>: {{ nbUsers }}
+        <strong>{{ w3i.fromWei(totalBets) }} Ξ</strong>
+        in play from
+        <strong>{{ nbUsers }}</strong> gambler<template v-if="nbUsers > 1">s</template>
       </div>
       <div>
         <strong>Owner</strong>:
@@ -46,7 +45,7 @@
     <div v-if="web3 && owner && owner == web3.coinbase" class="card form">
       <div>
         <span class="link-container bet">
-          <span><strong>Terminer la lotterie</strong></span>
+          <span><strong>Roll the decentralized dice</strong></span>
         </span>
       </div>
     </div>
