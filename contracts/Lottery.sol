@@ -36,7 +36,7 @@ contract Lottery is Killable {
 
     function endLottery() public onlyOwner returns (address) {
         uint sum = 0;
-        uint winningNumber = uint(block.blockhash(block.number - 1)) % totalBets;
+        uint winningNumber = uint(blockhash(block.number - 1)) % totalBets;
 
         for (uint i = 0; i < nbUsers; i++) {
             sum += usersBet[users[i]];
