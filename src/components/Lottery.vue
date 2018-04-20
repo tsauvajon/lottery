@@ -104,12 +104,15 @@ export default {
           console.log(`Couldn't get gas price. Keeping the default value.`)
           return
         }
-        this.gasPrice = price
+        this.gasPrice = price.toString(10)
       })
     },
 
     placeBet () {
-      // this.getGasPrice()
+      if (!this.gasPrice) {
+        this.getGasPrice()
+      }
+
       const { contract, bet, web3, w3i } = this
 
       if (!contract || !web3 || !w3i) {
