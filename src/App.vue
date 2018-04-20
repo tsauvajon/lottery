@@ -1,13 +1,18 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <img src="./assets/bingo.svg" height="80">
+    <router-view v-if="!error" />
+    <div v-else class="error" >
+      {{ error }}
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  name: 'App'
+  name: 'App',
+  computed: mapGetters(['error'])
 }
 </script>
 
@@ -19,5 +24,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.error {
+ color: #cb3837;
 }
 </style>
