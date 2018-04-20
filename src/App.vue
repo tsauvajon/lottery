@@ -3,7 +3,14 @@
     <img src="./assets/bingo.svg" height="80">
     <router-view v-if="!error" />
     <div v-else class="error" >
+      <br>
+      <br>
       {{ error }}
+      <br>
+      <br>
+      <a href="https://metamask.io">
+        <img src="./assets/download-metamask.png" alt="Get Metamask" />
+      </a>
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div />
+  <Metamask />
 </template>
 
 <script>
@@ -11,6 +11,10 @@ export default {
 
   beforeCreate () {
     this.$store.dispatch('registerWeb3')
+  },
+
+  async created () {
+    await this.$store.dispatch('getContractInstance')
   }
 }
 </script>
