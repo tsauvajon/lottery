@@ -179,6 +179,20 @@ export default {
         // TODO: proposer de re créer une lotterie ?
         // TODO: Afficher le gagnant
         console.log(result)
+
+        let interval
+        interval = setInterval(() => {
+          w3i.eth.getTransactionReceipt(result, (err, receipt) => {
+            if (err) {
+              console.log('Error getting the receipt:', err)
+              return
+            }
+            if (receipt) {
+              console.log('Transaction terminée !')
+              clearInterval(interval)
+            }
+          })
+        }, 3000)
       })
     }
   },

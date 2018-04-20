@@ -10,6 +10,8 @@
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
+    "contracts": "solc --abi --overwrite -o contracts/ contracts/Lottery.sol",
+    "deploy": "yarn build && push-dir --dir=dist --branch=gh-pages --cl",
     "build": "node build/build.js"
   },
   "dependencies": {
@@ -57,6 +59,7 @@
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
     "postcss-url": "^7.2.1",
+    "push-dir": "^0.4.1",
     "rimraf": "^2.6.0",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
