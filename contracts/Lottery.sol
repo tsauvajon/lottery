@@ -1,16 +1,19 @@
 pragma solidity ^0.4.21;
 
 import "./Killable.sol";
+import "./SafeMath.sol";
 
 contract Lottery is Killable {
-    mapping(address => uint) usersBet;
-    mapping(uint => address) users;
+    using SafeMath for uint256;
 
-    uint public nbUsers = 0;
-    uint public totalBets = 0;
+    mapping(address => uint256) usersBet;
+    mapping(uint256 => address) users;
 
-    event Bet(address _player, uint _amount);
-    event Won(address _winner, uint _pot);
+    uint256 public nbUsers = 0;
+    uint256 public totalBets = 0;
+
+    event Bet(address _player, uint256 _amount);
+    event Won(address _winner, uint256 _pot);
 
     modifier hasValue() {
         require(msg.value > 0);
@@ -28,17 +31,17 @@ contract Lottery is Killable {
             nbUsers++;
         }
 
-        usersBet[msg.sender] += msg.value;
-        totalBets += msg.value;
+        totalBets = totalBets.add(msg.value);
+        usersBet[msg.sender] = usersBet[msg.sender].add(msg.value);
 
         emit Bet(msg.sender, msg.value);
     }
 
     function endLottery() public onlyOwner returns (address) {
-        uint sum = 0;
-        uint winningNumber = uint(blockhash(block.number - 1)) % totalBets;
+        uint256 sum = 0;
+        uint256 winningNumber = uint256(blockhash(block.number - 1)) % totalBets;
 
-        for (uint i = 0; i < nbUsers; i++) {
+        for (uint256 i = 0; i < nbUsers; i++) {
             sum += usersBet[users[i]];
 
             if (sum >= winningNumber) {
