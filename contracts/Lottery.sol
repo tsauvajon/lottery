@@ -39,6 +39,7 @@ contract Lottery is Killable {
 
     function endLottery() public onlyOwner returns (address) {
         uint256 sum = 0;
+        // Not safe at all
         uint256 winningNumber = uint256(blockhash(block.number - 1)) % totalBets;
 
         for (uint256 i = 0; i < nbUsers; i++) {

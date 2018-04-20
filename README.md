@@ -3,7 +3,7 @@
 ## DApp
 
 Lottery is a [Decentralized Application](https://www.coindesk.com/information/what-is-a-decentralized-application-dapp/)
-(or DApp, for short) build on the [Ethereum blockchain](https://www.ethereum.org/)
+(or DApp, for short) built on the [Ethereum blockchain](https://www.ethereum.org/)
 using the [Vue.js](https://vuejs.org/) framework for the interface.
 
 ## Interact with the Ethereum blockchain
