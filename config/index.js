@@ -47,10 +47,17 @@ module.exports = {
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
 
+    ipnsOptionalPath: process.env.IPFS_PUBKEY
+      ? `ipns/${process.env.IPFS_PUBKEY}/`
+      : '',
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/lottery/',
+
+    // Tell Webpack to append all asset paths (eg /static/app.js) with the 'ipns root'.
+    assetsPublicPath: process.env.IPFS_PUBKEY
+      ? `/ipns/${process.env.IPFS_PUBKEY}/` //
+      : '/lottery/',
 
     /**
      * Source Maps
